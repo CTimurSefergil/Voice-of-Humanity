@@ -1,12 +1,13 @@
 mod voice_data;
 
 use std::fs::File;
-use std::io::{BufReader};
+use std::io::BufReader;
 use rodio::{Decoder, OutputStream, source::Source};
 use crate::voice_data::read_voice_data;
 
 fn main() {
-// Voices that are going to be used for tests
+    
+// Collects voices into vector
     let voices = read_voice_data("voices.csv");
 
 // Get system sound device
@@ -27,4 +28,5 @@ fn main() {
 // The sound plays in a separate audio thread,
 // so we need to keep the main thread alive while it's playing.
     std::thread::sleep(std::time::Duration::from_secs(10));
+    
 }
